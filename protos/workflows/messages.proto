@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+package workflows;
+
+option java_package = "rem.tools.workflows";
+option java_multiple_files = true;
+
+import "google/protobuf/struct.proto";
+
+message Step {
+  string uuid = 1;
+  string workflow_uuid = 2;
+  string status = 3;
+  string step = 7;
+
+  google.protobuf.Struct payload = 8;
+
+  string updated_at = 6;
+  string created_at = 5;
+
+  google.protobuf.Struct metadata = 4;
+}
+
+message Workflow {
+  string uuid = 1;
+  string people_uuid = 6;
+
+  string status = 7;
+
+  google.protobuf.Struct metadata = 2;
+  google.protobuf.Struct error = 8;
+
+  string updated_at = 3;
+  string created_at = 4;
+
+  int32 expires_in = 9;
+
+  repeated Step steps = 5;
+}
+
+
